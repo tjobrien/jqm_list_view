@@ -1,0 +1,13 @@
+{
+"devices": [
+	{ "serial_number":"50098542" , "status":"Installed", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098543" , "status":"Pending", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098544" , "status":"Failed", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13"},
+	{ "serial_number":"50098545" , "status":"Installed", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098546" , "status":"Pending", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098547" , "status":"Failed", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098548" , "status":"Unkown", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098549" , "status":"Installed", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13" },
+	{ "serial_number":"50098550" , "status":"Pending", "vin":"12345678907654321", "confirmation_code":"XJR400012", "date_passed":"12-12-13"}
+	]
+}

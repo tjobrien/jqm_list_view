@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.0.css" />
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var devices;
+         	$(document).on('pageinit', function() {
+             // alert("pageinit");
+             
+              $.ajax({                    
+                  url: 'json.txt',
+                  dataType: 'json',
+                  cache: false,
+                  success: function( data, status ){
+                     // alert('radi');
+                     // alert(JSON.stringify(data));
+                      devices = data;
+                     // alert(status);
+                     // alert( data.responseData.results.length + ' results found!' );
+                    populateDevices(devices);
+                  },
+                  error: function(xhr, textStatus, err) { //odstampaj textStatus, err jbt
+                      alert('ne radi');
+                      alert(textStatus);
+                      alert(err);
+                      alert("readyState: "+xhr.readyState+"\n xhrStatus: "+xhr.status);
+                      alert("responseText: "+xhr.responseText);
+                  }
+              });
+              function populateDevices(){
+                      console.log("populateDevicess");
+                      $('#device_list_view').empty();
+                      device_array = devices.devices;
+                      
+                      $.each(device_array, function(index, value) {
+                              var        device = value;
+
+                               // var li = '<li class="ui-first-child"><a href="#details" id="4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">' + device.serial_number + ' - ' + device.status + '</a></li>';
+                               var li = '<li class="ui-first-child"><a href="#details" id="4"><div role="main" class="ui-content"><div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px"><p>Serial Number:  ' + device.serial_number + '</p><p>Status:  ' + device.status + '</p></div></div><div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px"><p>Vin:  ' + device.vin + '</p><p>Conf. Code:  ' + device.confirmation_code + '</p><p>Date Passed:  ' + device.date_passed + '</p></div></div></div></div></a></li>';
+                      
+                               $("#device_list_view").append(li);
+                              // $('#device_list_view').append($('<li/>', {    //here appending `<li>`
+                              // 'text': device['serial_number'] + " " + device['status']
+                              // }));  
+
+
+                      });
+                      
+                      $('#device_list_view').listview('refresh');
+              }
+
+            	
+            });
+    </script>
+</head>
+<body>
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>Your Devices</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+	<ul id="device_list_view" data-filter="true" data-role="listview">
+    <li>
+      <a href="#">
+        <div role="main" class="ui-content">
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <div class="ui-bar ui-bar-a" style="height:60px">Some Devices Details</div>
+        </div>
+        <div class="ui-block-b">
+          <div class="ui-bar ui-bar-a" style="height:60px">Device Details</div>
+        </div>
+    </div><!-- /grid-a -->
+    <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <div class="ui-bar ui-bar-a" style="height:60px">More Devices Details</div>
+        </div>
+        <div class="ui-block-b">
+          <div class="ui-bar ui-bar-a" style="height:60px">And More Device Details</div>
+        </div>
+    </div><!-- /grid-a -->
+  </div><!-- /content -->
+  </a>
+    </li>
+
+
+	</ul>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Network Fleet</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+<div data-role="page" id='details'>
+
+	<div data-role="header">
+		<h1>Device Details</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<div class="ui-grid-a">
+    		<div class="ui-block-a">
+    			<div class="ui-bar ui-bar-a" style="height:60px">Some Devices Details</div>
+    		</div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">Device Details</div>
+    		</div>
+		</div><!-- /grid-a -->
+		<div class="ui-grid-a">
+    		<div class="ui-block-a">
+    			<div class="ui-bar ui-bar-a" style="height:60px">More Devices Details</div>
+    		</div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">And More Device Details</div>
+    		</div>
+		</div><!-- /grid-a -->
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Network Fleet</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
