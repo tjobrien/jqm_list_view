@@ -10,7 +10,6 @@
 	<script src="js/jquery.mobile-1.4.0.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		var devices;
-    var parameter;
     $(document).on('pageinit', function() {
       // alert("pageinit");
       $.ajax({                    
@@ -33,16 +32,18 @@
               alert("responseText: "+xhr.responseText);
           }
       }); //ajax
+
+       $('#device_list_view').on('click', 'li', function() {
+        alert("Works"); // id of clicked li by directly accessing DOMElement property
+        });
       function populateDevices(){
               console.log("populateDevicess");
               $('#device_list_view').empty();
               device_array = devices.devices.device;  //devices is variable, devices is json hash, device is array
               
               $.each(device_array, function(index, value) {
-                      var        device = value;
-
-                       // var li = '<li class="ui-first-child"><a href="#details" id="4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">' + device.serial_number + ' - ' + device.status + '</a></li>';
-                       var li = '<li class="ui-first-child"><a href="device.html?serial_number=' + device.serial_number + '"><div role="main" class="ui-content"><div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px"><p>Serial Number:  ' + device.serial_number + '</p><p>Status:  ' + device.status + '</p></div></div><div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px"><p>Vin:  ' + device.vin + '</p><p>Conf. Code:  ' + device.confirmation_code + '</p><p>Date Passed:  ' + device.date_passed + '</p></div></div></div></div></a></li>';
+                      var device = value;
+                      var li = '<li class="ui-first-child"><a href="#">Test</a></li>';
               
                        $("#device_list_view").append(li);
                       // $('#device_list_view').append($('<li/>', {    //here appending `<li>`
@@ -59,13 +60,6 @@
        //alert(devices.devices.device[0].serial_number);
        $('#serial_number').text(devices.devices.device[0].serial_number);
       });
-
-      $(document).on('pagebeforeshow', "#details", function () {
-            var parameters = $(this).data("url").split("?")[1];
-            parameter = parameters.replace("serial_number=","");  
-            //alert(parameter);
-           $('#serial_number').text(parameter);
-        });        
 
     });
     </script>
@@ -113,6 +107,42 @@
 </div><!-- /page -->
 
 
+<div data-role="page" id='details'>
+	<div data-role="header">
+		<h1>Device Details</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<div class="ui-grid-a">
+    		<div class="ui-block-a">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="serial_number"></p>
+          </div>
+    		</div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="status"></p>
+          </div>
+    		</div>
+		</div><!-- /grid-a -->
+		<div class="ui-grid-a">
+    		<div class="ui-block-a">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="status"></p>
+          </div>
+    		</div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="conf_code"></p>
+          </div>
+    		</div>
+		</div><!-- /grid-a -->
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Network Fleet</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
 
 </body>
 </html>

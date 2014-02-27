@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.0.css" />
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery.mobile-1.4.0.js"></script>
+	<script type="text/javascript" charset="utf-8">
+    $(document).on('pageinit', function() {
+    //   var parameters = $(this).data("url").split("?")[1];;
+    // parameter = parameters.replace("parameter=","");  
+    // alert(parameter);
+     });
+    </script>
+</head>
+<body>
+<div data-role="page" id='details'>
+	<div data-role="header">
+		<h1>Device Details</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<div class="ui-grid-a">
+    		<div class="ui-block-a">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="serial_number"></p>
+          </div>
+    		</div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="status"></p>
+          </div>
+    		</div>
+		</div><!-- /grid-a -->
+		<div class="ui-grid-a">
+    		<div class="ui-block-a">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="status"></p>
+          </div>
+    		</div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+            <p id="conf_code"></p>
+          </div>
+    		</div>
+		</div><!-- /grid-a -->
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Network Fleet</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
