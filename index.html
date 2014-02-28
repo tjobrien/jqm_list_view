@@ -10,7 +10,6 @@
 	<script src="js/jquery.mobile-1.4.0.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		var devices;
-    var parameter;
     $(document).on('pageinit', function() {
       // alert("pageinit");
       $.ajax({                    
@@ -42,7 +41,7 @@
                       var        device = value;
 
                        // var li = '<li class="ui-first-child"><a href="#details" id="4" class="ui-btn ui-btn-icon-right ui-icon-carat-r">' + device.serial_number + ' - ' + device.status + '</a></li>';
-                       var li = '<li class="ui-first-child"><a href="device.html?serial_number=' + device.serial_number + '"><div role="main" class="ui-content"><div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px"><p>Serial Number:  ' + device.serial_number + '</p><p>Status:  ' + device.status + '</p></div></div><div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px"><p>Vin:  ' + device.vin + '</p><p>Conf. Code:  ' + device.confirmation_code + '</p><p>Date Passed:  ' + device.date_passed + '</p></div></div></div></div></a></li>';
+                       var li = '<li class="ui-first-child"><a href="device.html?index=' + index + '"><div role="main" class="ui-content"><div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px"><p>Serial Number:  ' + device.serial_number + '</p><p>Status:  ' + device.status + '</p></div></div><div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px"><p>Vin:  ' + device.vin + '</p><p>Conf. Code:  ' + device.confirmation_code + '</p><p>Date Passed:  ' + device.date_passed + '</p></div></div></div></div></a></li>';
               
                        $("#device_list_view").append(li);
                       // $('#device_list_view').append($('<li/>', {    //here appending `<li>`
@@ -57,14 +56,14 @@
 
       $('#details').on('pageshow', function(event){
        //alert(devices.devices.device[0].serial_number);
-       $('#serial_number').text(devices.devices.device[0].serial_number);
+      // $('#serial_number').text(devices.devices.device[0].serial_number);
       });
 
       $(document).on('pagebeforeshow', "#details", function () {
             var parameters = $(this).data("url").split("?")[1];
-            parameter = parameters.replace("serial_number=","");  
+            parameter = parameters.replace("index=","");  
             //alert(parameter);
-           $('#serial_number').text(parameter);
+           $('#serial_number').text(devices.devices.device[parameter].serial_number);
         });        
 
     });
