@@ -11,7 +11,7 @@
 	<script type="text/javascript" charset="utf-8">
 		var devices;
     $(document).on('pageinit', function() {
-      // alert("pageinit");
+      alert("pageinit");
       $.ajax({                    
           url: 'json.txt',
           dataType: 'json',
@@ -32,6 +32,21 @@
               alert("responseText: "+xhr.responseText);
           }
       }); //ajax
+
+      $("#refreshList").click(function(e){
+               // alert("clicked");
+               console.log("refresh clicked");
+               $.mobile.changePage("#main",
+                        {
+                          allowSamePageTransition : true,
+                          // transition              : 'none',
+                          // showLoadMsg             : false,
+                          reloadPage              : true
+                        }
+                      );
+               //window.location.href
+      }); //click event
+
       function populateDevices(){
               console.log("populateDevicess");
               $('#device_list_view').empty();
@@ -54,17 +69,21 @@
               $('#device_list_view').listview('refresh');
       }//function
 
-      $('#details').on('pageshow', function(event){
-       //alert(devices.devices.device[0].serial_number);
-      // $('#serial_number').text(devices.devices.device[0].serial_number);
-      });
+              
+    
+  
 
-      $(document).on('pagebeforeshow', "#details", function () {
-            var parameters = $(this).data("url").split("?")[1];
-            parameter = parameters.replace("index=","");  
-            //alert(parameter);
-           $('#serial_number').text(devices.devices.device[parameter].serial_number);
-        });        
+      // $('#details').on('pageshow', function(event){
+      //  //alert(devices.devices.device[0].serial_number);
+      // // $('#serial_number').text(devices.devices.device[0].serial_number);
+      // });
+
+      // $(document).on('pagebeforeshow', "#details", function () {
+      //       var parameters = $(this).data("url").split("?")[1];
+      //       parameter = parameters.replace("index=","");  
+      //       //alert(parameter);
+      //      $('#serial_number').text(devices.devices.device[parameter].serial_number);
+      //   });        
 
     });
     </script>
@@ -75,6 +94,7 @@
 
 	<div data-role="header">
 		<h1>Your Devices</h1>
+    <a href="#" id="refreshList">Refesh Page</a>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
